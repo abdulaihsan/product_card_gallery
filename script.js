@@ -72,4 +72,69 @@ let products = [
             e.target.reset();
         });
 
+        const fetchFakeProducts = () => {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    const isSuccess = Math.random() > 0.5;
+                    
+                    if (isSuccess) {
+                        const sampleData = [
+                            {
+                                id: Date.now() + 1,
+                                name: "Gaming Mouse",
+                                price: "59.99",
+                                description: "Ergonomic optical sensor mouse with customizable RGB lighting.",
+                                image: "mouse.jpeg"
+                            },
+                            {
+                                id: Date.now() + 2,
+                                name: "Curved Monitor",
+                                price: "299.99",
+                                description: "34-inch ultrawide display for an immersive productivity experience.",
+                                image: "monitor.jpeg"
+                            }
+                        ];
+                        resolve(sampleData);
+                    } else {
+                        reject(new Error("500 Internal Server Error"));
+                    }
+                }, 1000);
+            });
+        };
+
+        document.getElementById('loadSamplesBtn').addEventListener('click', async (e) => {
+            const btn = e.target;
+            const alertContainer = document.getElementById('alert-container');
+            
+            btn.disabled = true;
+            alertContainer.innerHTML = `
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    Loading new products...
+                </div>
+            `;
+
+            try {
+                const newProducts = await fetchFakeProducts();
+                products = [...products, ...newProducts];
+                renderProducts();
+                
+                alertContainer.innerHTML = `
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        Sample products loaded successfully!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                `;
+            } catch (error) {
+                alertContainer.innerHTML = `
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Error:</strong> Failed to load products. The server rejected the request. Please try again.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                `;
+            } finally {
+                btn.disabled = false;
+            }
+        });
+
         renderProducts();
+
