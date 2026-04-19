@@ -9,81 +9,19 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-5">
         <div class="container">
-            <a class="navbar-brand" href="#">Store</a>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Shop</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
+            <a class="navbar-brand" href="#">Storefront</a>
         </div>
     </nav>
 
     <div class="container mb-5">
-        <div class="row g-4">
-            
-            <div class="col-12 col-md-4">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="ratio ratio-4x3"> 
-                    <img src="headphones.jpeg" class="card-img-top object-fit-cover" alt="Product Image">
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h5 class="card-title mb-0">Wireless Headphones</h5>
-                            <span class="badge bg-primary fs-6">$129.99</span>
-                        </div>
-                        <p class="card-text text-muted mb-4">Hi-Fi audio with active noise cancellation and a 30-hour battery life.</p>
-                        <button class="btn btn-outline-dark w-100 mt-auto">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-4">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="ratio ratio-4x3"> 
-                    <img src="smartwatch.jpeg" class="card-img-top object-fit-cover" alt="Product Image">
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h5 class="card-title mb-0">Smartwatch Pro</h5>
-                            <span class="badge bg-primary fs-6">$199.99</span>
-                        </div>
-                        <p class="card-text text-muted mb-4">Track your fitness, heart rate, and sleep patterns with this water-resistant device.</p>
-                        <button class="btn btn-outline-dark w-100 mt-auto">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-4">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="ratio ratio-4x3"> 
-                    <img src="keyboard.jpeg" class="card-img-top object-fit-cover" alt="Product Image">
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h5 class="card-title mb-0">Mechanical Keyboard</h5>
-                            <span class="badge bg-primary fs-6">$89.99</span>
-                        </div>
-                        <p class="card-text text-muted mb-4">Tactile mechanical keyboard with customizable RGB backlighting and ergonomic wrist rest.</p>
-                        <button class="btn btn-outline-dark w-100 mt-auto">Add to Cart</button>
-                    </div>
-                </div>
-            </div>
-
+        <div class="row g-4" id="gallery-container">
         </div>
         <div class="row justify-content-center">
             <div class="col-12 col-md-8 col-lg-6">
                 <div class="card shadow-sm border-0">
                     <div class="card-body p-4">
                         <h4 class="card-title mb-4">Add New Product</h4>
-                        <form>
+                        <form id="add-product-form">
                             <div class="mb-3">
                                 <label for="productName" class="form-label">Product Name</label>
                                 <input type="text" class="form-control" id="productName" required>
@@ -93,7 +31,7 @@
                                 <label for="productPrice" class="form-label">Product Price</label>
                                 <div class="input-group">
                                     <span class="input-group-text">$</span>
-                                    <input type="number" class="form-control" id="productPrice" required>
+                                    <input type="number" class="form-control" id="productPrice" step="0.01" required>
                                 </div>
                             </div>
                             
@@ -108,6 +46,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    <script src="script.js"></script>
 </body>
 </html>
